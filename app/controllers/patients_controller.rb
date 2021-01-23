@@ -1,7 +1,10 @@
 class PatientsController < ApplicationController
   
-  before_action :authenticate_user!, :authenticate_doctor, except: [:new, :create, :update, :show]
+  before_action :authenticate_user!, :authenticate_patient, except: [:new, :create, :update, :show]
 
+  before_action :new_registration, only: [:new, :create]
+
+  before_action :set_patient, only: [:show, :edit, :update, :destroy]   
 
   def index
     @patients = Patient.all
@@ -30,8 +33,19 @@ class PatientsController < ApplicationController
     
 private
 
-   def patients_params
-     params.require(:patient).permit(:name, user_attributes: [ :id, :email, :name, :password, :password_confirmation ])
-   end
+  def patients_params
+    params.require(:patient).permit(:name, user_attributes: [ :id, :email, :name, :password, :password_confirmation ])
+  end
+  
+  def authenticate_patient     
+    redirect_to(new_user_session_path) unless current_user.multiple_role_type == "Patient"  
+  end
+  
+  def new_registration
+    redirect_to(patients_path) if user_signed_in?
+  end
 
+  def set_teacher
+    @patient = Patient.find(params[:id])
+  end
 end

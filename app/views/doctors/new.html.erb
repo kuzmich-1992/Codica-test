@@ -1,0 +1,41 @@
+<%= form_for(@doctor) do |f| %>
+  
+  <div class="row" style="text-align: center;">
+  	
+
+  <div class="col-lg-6">
+    <%= f.label "specialization" %><br>
+    <%= f.text_field :specialization %>
+  </div>
+  
+  
+  <%= f.fields_for :user do |u| %>
+  		<div class="col-lg-6">      
+        <%= u.label :name %><br>
+      <%= u.text_field :name %>
+      </div>
+      
+
+      <div class="col-lg-6">  		
+  			<%= u.label :email %><br>
+			<%= u.text_field :email %>
+  		</div>
+  		
+  		<div class="col-lg-6">
+  			<%= u.label :password %><br>
+			<%= u.text_field :password %>
+  		</div>
+  		
+  		<div class="col-lg-6">
+  			<%= u.label :password_confirmation %><br>
+			<%= u.text_field :password_confirmation %>
+  		</div>		
+  	<% end %>  	
+  		
+  <div class="col-lg-12" style="margin: 10px 0px; text-align: center;">
+    	<%= f.submit "Submit", :class=>"btn btn-success" %>
+  	</div>
+  
+</div>
+
+<% end %>

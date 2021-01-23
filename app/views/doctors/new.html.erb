@@ -1,41 +1,33 @@
-<%= form_for(@doctor) do |f| %>
-  
-  <div class="row" style="text-align: center;">
-  	
+<h3>Sign up as doctor</h3>
 
-  <div class="col-lg-6">
-    <%= f.label "specialization" %><br>
-    <%= f.text_field :specialization %>
-  </div>
-  
+<%= form_for(@doctor) do |f| %>
+
+    <br><%= f.label "specialization" %>
+    <br><%= f.text_field :specialization %>
+ 
   
   <%= f.fields_for :user do |u| %>
-  		<div class="col-lg-6">      
-        <%= u.label :name %><br>
-      <%= u.text_field :name %>
-      </div>
+  		
+      <br><%= u.label :name %>
+      <br><%= u.text_field :name %>
+     
       
+  		<br><%= u.label :email %>
+			<br><%= u.text_field :email %>
+  	
+  			
+  		<br><%= u.label :password %>
+			<br><%= u.text_field :password %>
+  	
+  		<br><%= u.label :password_confirmation %>
+			<br><%= u.text_field :password_confirmation %>
+  	
+  	<% end %>  
 
-      <div class="col-lg-6">  		
-  			<%= u.label :email %><br>
-			<%= u.text_field :email %>
-  		</div>
+    <br>	
   		
-  		<div class="col-lg-6">
-  			<%= u.label :password %><br>
-			<%= u.text_field :password %>
-  		</div>
-  		
-  		<div class="col-lg-6">
-  			<%= u.label :password_confirmation %><br>
-			<%= u.text_field :password_confirmation %>
-  		</div>		
-  	<% end %>  	
-  		
-  <div class="col-lg-12" style="margin: 10px 0px; text-align: center;">
-    	<%= f.submit "Submit", :class=>"btn btn-success" %>
-  	</div>
-  
+    <br><%= f.submit "Submit", :class=>"btn btn-success" %>
+  	
 </div>
 
 <% end %>

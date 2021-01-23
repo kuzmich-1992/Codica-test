@@ -1,0 +1,25 @@
+<h3>Sign up as patient</h3>
+
+<br>
+
+<%= form_for(@patient) do |f| %>
+
+    <%= f.fields_for :user do |u| %>
+  		
+      <p><%= u.label :name %></p>
+      <p><%= u.text_field :name %></p>
+       
+  		<p><%= u.label :email %></p>
+			<p><%= u.text_field :email %></p>
+  		
+  		<p><%= u.label :password %></p>
+			<p><%= u.password_field :password %></p>
+  		
+  		<p><%= u.label :password_confirmation %></p>
+			<p><%= u.password_field :password_confirmation %></p>
+  	
+  	<% end %>  	
+  		
+    <%= f.submit "Submit", :class=>"btn btn-success" %>
+  
+<% end %>

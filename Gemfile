@@ -38,6 +38,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'cancancan'
 gem 'activeadmin'
+gem 'bootstrap'
+gem 'jquery-rails'
+gem 'simple_form'
+gem 'mini_racer', platforms: :ruby
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

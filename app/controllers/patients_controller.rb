@@ -42,7 +42,7 @@ private
   end
   
   def new_registration
-    redirect_to(patients_path) if user_signed_in?
+    redirect_to("patients#index") if user_signed_in?
   end
 
   def set_teacher

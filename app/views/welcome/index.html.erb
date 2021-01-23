@@ -1,3 +1,21 @@
 <li><%= link_to("Doctors Registration", new_doctor_path) %></li>	
 <li><%= link_to("Patients Registration", new_patient_path) %></li>	            	
 <li><%= link_to("Login", new_user_session_path) %></li>         
+
+<br>
+
+<% if current_user %>
+
+<% if current_user.multiple_role_type == "Doctor"%>
+
+	<h4><%= link_to 'Doctors profile', doctors_path %></h4>
+
+<%end%>
+
+<% if current_user.multiple_role_type == "Patient"%>
+
+	<h4><%= link_to 'Patients profile', patients_path %></h4>
+
+<%end%>
+
+<%end%>

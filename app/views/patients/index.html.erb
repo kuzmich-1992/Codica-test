@@ -1,2 +1,14 @@
 <br><td><%= current_user.name %></td>
 <br><td><%= current_user.email %></td>
+
+<br>
+<br>
+
+<br><h4>Doctors list</h4>
+   <% User.all.each do |u| %>
+  <% if u.multiple_role_type == "Doctor"%>
+     <li>
+        <%= u.name %>
+     </li>
+  <% end %>  
+<% end %>

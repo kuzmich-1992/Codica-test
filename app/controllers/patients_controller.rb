@@ -10,8 +10,7 @@ class PatientsController < ApplicationController
     @patients = Patient.all
     @doctors = Doctor.all
   end
-
-
+  
   def new
     @patient = Patient.new
     @patient.build_user
@@ -46,7 +45,7 @@ private
     redirect_to("patients#index") if user_signed_in?
   end
 
-  def set_teacher
+  def set_patient
     @patient = Patient.find(params[:id])
   end
 end

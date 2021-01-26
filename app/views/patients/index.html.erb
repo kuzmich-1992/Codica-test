@@ -6,12 +6,20 @@
 
 <br><h4>Doctors list</h4>
    <% @doctors.each do |doctor| %>
+   <% @patients.each do |patient| %>
      <div class="card border-dark mb-3">
        <div class="card">
          <div class="card-body" style="background-color: #CCFFCC;">
-           <p><%= doctor.user.name %></p>
-	       <p><%= doctor.specialization %></p>  
-	     </div>
+           <p>name: <%= doctor.user.name %></p>
+	       <p>specialization: <%= doctor.specialization %></p>  
+	
+            <%= form_for Appointment.new , :html => { :id => "new_appointment_#{patient.id}" } do |f| %> 
+              <%= f.hidden_field :patient_id, :value => patient.id %>
+              <%= f.hidden_field :doctor_id, :value => doctor.id %>
+              <p><%= f.submit "create appointment", class: "btn btn-primary submit appointment", id:"#{doctor.id}"%></p>  
+            <% end %>  
+	      </div>
 	   </div>
      </div>
+   <% end %>
    <% end %>

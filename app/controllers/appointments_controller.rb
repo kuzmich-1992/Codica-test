@@ -1,5 +1,9 @@
 class AppointmentsController < ApplicationController
 
+  def index
+    @appointments = Appointment.all
+  end
+
   def create
     @patient = Patient.find_by(params[:multiple_role_id])
     @doctor = Doctor.find_by(params[:multiple_role_id])

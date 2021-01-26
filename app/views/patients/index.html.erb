@@ -23,3 +23,17 @@
      </div>
    <% end %>
    <% end %>
+
+   <br><h4>Appointments list</h4>
+   <% @patients.each do |patient| %>
+   <% patient.appointments.each do |appointment| %>
+     <div class="card border-dark mb-3">
+       <div class="card">
+         <div class="card-body" style="background-color: #CCFFCC;">
+           <p>created: <%= appointment.created_at %></p>
+	      </div>
+	   </div>
+     </div>
+   <% end %>
+   <% end %>
+  

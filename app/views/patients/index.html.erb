@@ -4,6 +4,10 @@
 <br>
 <br>
 
+<div class="container" id='cont'>
+<div class="row">
+<div class="col-md">
+
 <br><h4>Doctors list</h4>
    <% @doctors.each do |doctor| %>
    <% @patients.each do |patient| %>
@@ -12,17 +16,28 @@
          <div class="card-body" style="background-color: #CCFFCC;">
            <p>name: <%= doctor.user.name %></p>
 	       <p>specialization: <%= doctor.specialization %></p>  
-	
+	       <div class="card border-dark mb-3">
+           <div class="card">
+           <div class="card-body" style="background-color: #FFFF99;">
+           <h4>Create appointment please</h4>
             <%= form_for Appointment.new , :html => { :id => "new_appointment_#{patient.id}" } do |f| %> 
               <%= f.hidden_field :patient_id, :value => patient.id %>
               <%= f.hidden_field :doctor_id, :value => doctor.id %>
-              <p><%= f.submit "create appointment", class: "btn btn-primary submit appointment", id:"#{doctor.id}"%></p>  
+              <p><%= f.label :visit_time%></p>
+              <p><%= f.text_field :visit_time, id:'visit_time' %></p>
+              <p><%= f.submit "create appointment", class: "btn btn-primary submit appointment", id:"#{doctor.id}"%></p> 
+              </div>
+	          </div>
+              </div> 
             <% end %>  
 	      </div>
 	   </div>
      </div>
    <% end %>
    <% end %>
+   </div>
+   
+   <div class="col-md">
 
    <br><h4>Appointments list</h4>
    <% @patients.each do |patient| %>
@@ -31,9 +46,12 @@
        <div class="card">
          <div class="card-body" style="background-color: #CCFFCC;">
            <p>created: <%= appointment.created_at %></p>
+           <p>visit time: <%= appointment.visit_time%></p>
 	      </div>
 	   </div>
      </div>
    <% end %>
    <% end %>
-  
+   </div>
+   </div>
+   </div>

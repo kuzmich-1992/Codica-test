@@ -3,7 +3,7 @@
 <%= form_for(@doctor) do |f| %>
 
     <br><%= f.label "specialization" %>
-    <br><%= f.text_field :specialization %>
+    <br><%= f.select :specialization, ['therapist', 'surgeon', 'cardiologist', 'ophtalmologist'], {}, id:'specialization'%> 
  
   
   <%= f.fields_for :user do |u| %>

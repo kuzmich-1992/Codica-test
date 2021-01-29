@@ -5,16 +5,21 @@
 <br>
 
 <% @doctors.each do |doctor| %>
-   <% doctor.appointments.each do |appointment| %>
-     <% if current_user.name == appointment.doctor.user.name %>
-       <div class="card border-dark mb-3">
-         <div class="card">
-           <div class="card-body" style="background-color: #CCFFCC;">
-             <p>doctors name: <%= appointment.doctor.user.name %></p>
-             <p>visit time: <%= appointment.visit_time%></p>
-	       </div>
-	     </div>
-       </div>
-     <% end %>
-   <% end %>
+  <% doctor.appointments.each do |appointment| %>
+    <% if current_user.name == appointment.doctor.user.name %>
+      <div class="card border-dark mb-3">
+        <div class="card">
+          <div class="card-body" style="background-color: #CCFFCC;">
+            <p>doctors name: <%= appointment.doctor.user.name %></p>
+            <p>visit time: <%= appointment.visit_time%></p>             
+            <%= form_for appointment do |f| %>
+              <%= f.label 'Recomendation for patient' %><br>
+              <%= f.text_area :description %><br>
+              <%= f.submit "Submit Recomendation" %>
+            <% end %>
+	        </div>
+	      </div>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>

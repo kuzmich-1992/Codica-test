@@ -4,6 +4,14 @@ class AppointmentsController < ApplicationController
     @appointments = Appointment.all
   end
 
+  def update
+    @patient = Patient.find_by(params[:multiple_role_id])
+    @doctor = Doctor.find_by(params[:multiple_role_id])
+    @appointment = Appointment.find(params[:id])
+    @appointment.update(appointments_params)
+    redirect_to doctors_path(@doctor)
+  end
+
   def create
     @patient = Patient.find_by(params[:multiple_role_id])
     @doctor = Doctor.find_by(params[:multiple_role_id])

@@ -8,7 +8,11 @@ class PatientsController < ApplicationController
 
   def index
     @patients = Patient.all
-    @doctors = Doctor.all
+    if params[:doctor] and params[:doctor][:specialization]
+      @doctors = Doctor.search(params[:doctor][:specialization])
+    else
+      @doctors = Doctor.all
+    end
   end
   
   def new

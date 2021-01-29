@@ -8,7 +8,9 @@ class DoctorsController < ApplicationController
 
 
   def index
-    @doctors = Doctor.all
+    
+      @doctors = Doctor.all
+    
   end
 
 

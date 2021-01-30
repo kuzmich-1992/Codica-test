@@ -52,6 +52,23 @@
         <div class="card border-dark mb-3">
           <div class="card">
             <div class="card-body" style="background-color: #CCFFCC;">
+              <p><% if appointment.description.nil? %>
+              <div class="card border-dark mb-3">
+                <div class="card">
+                  <div class="card-body" style="background-color: #00AA00;">
+                    appointment open 
+                  </div>
+                 </div>
+              </div>
+              <% else %>
+              <div class="card border-dark mb-3">
+                <div class="card">
+                  <div class="card-body" style="background-color: #FF6633;">
+                    appointment close
+                    </div>
+                 </div>
+              </div>
+              <% end %></p>
               <p>visit time: <%= appointment.visit_time%></p>
               <p>doctors specialization : <%= appointment.doctor.specialization %></p>
               <p>doctors name: <%= appointment.doctor.user.name %></p>

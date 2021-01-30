@@ -10,6 +10,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     @appointment.update(appointments_params)
     @appointment.update(status_open: !@appointment.status_open?)
+    @appointment.save!
     redirect_to doctors_path(@doctor)
   end
 

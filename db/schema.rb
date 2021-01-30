@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_01_24_013200) do
     t.bigint "doctor_id"
     t.string "visit_time"
     t.text "description"
+    t.boolean "status_open", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"

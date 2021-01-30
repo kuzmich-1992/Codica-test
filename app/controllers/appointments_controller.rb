@@ -9,6 +9,7 @@ class AppointmentsController < ApplicationController
     @doctor = Doctor.find_by(params[:multiple_role_id])
     @appointment = Appointment.find(params[:id])
     @appointment.update(appointments_params)
+    @appointment.update(status_open: !@appointment.status_open?)
     redirect_to doctors_path(@doctor)
   end
 
@@ -25,6 +26,6 @@ class AppointmentsController < ApplicationController
   end
 
   def appointments_params
-    params.require(:appointment).permit(:doctor_id, :patient_id, :visit_time, :description)
+    params.require(:appointment).permit(:doctor_id, :patient_id, :visit_time, :description, :status_open)
   end
 end

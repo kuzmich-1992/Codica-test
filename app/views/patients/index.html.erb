@@ -29,8 +29,8 @@
                       <%= form_for Appointment.new , :html => { :id => "new_appointment_#{patient.id}" } do |f| %> 
                         <%= f.hidden_field :patient_id, :value => patient.id %>
                         <%= f.hidden_field :doctor_id, :value => doctor.id %>
-                        <p><%= f.label :visit_time%></p>
-                        <p><%= f.text_field :visit_time, id:'visit_time' %></p>
+                        <p><%= f.label :visit_time %></p>
+                        <p><%= f.date_field :visit_time, min: Date.today, start_year: Date.today.year - 0 %></p>
                         <p><%= f.submit "create appointment", class: "btn btn-primary submit appointment", id:"#{doctor.id}"%></p> 
                       <% end %>  
                     </div>
@@ -65,3 +65,4 @@
     </div>
   </div>
 </div>
+

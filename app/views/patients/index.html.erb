@@ -27,7 +27,7 @@
                     <div class="card-body" style="background-color: #FFFF99;">
                       
                       <h4>Create appointment please</h4>
-                      <%= form_for Appointment.new , :html => { :id => "new_appointment_#{patient.id}" } do |f| %> 
+                      <%= form_for Appointment.new , :html => { :id => "new_appointment_#{patient.id}" } do |f| %>
                         <%= f.hidden_field :patient_id, :value => patient.id %>
                         <%= f.hidden_field :doctor_id, :value => doctor.id %>
                         <p><%= f.label :visit_time %></p>
@@ -70,6 +70,7 @@
                  </div>
               </div>
               <% end %></p>
+              <p>status open: <%= appointment.status_open%></p>
               <p>visit time: <%= appointment.visit_time%></p>
               <p>doctors specialization : <%= appointment.doctor.specialization %></p>
               <p>doctors name: <%= appointment.doctor.user.name %></p>

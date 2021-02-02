@@ -1,6 +1,8 @@
 <br><td><%= current_user.name %></td>
 <br><td><%= current_user.email %></td>
 
+
+
 <br>
 <br>
 
@@ -16,7 +18,6 @@
       <br><h4>Doctors list</h4>
 
       <% @doctors.each do |doctor| %>
-        <% @patients.each do |patient| %>
           <div class="card border-dark mb-3">
             <div class="card">
               <div class="card-body" style="background-color: #CCFFCC;">
@@ -24,11 +25,10 @@
                 <p>specialization: <%= doctor.specialization %></p>  
         	      <div class="card border-dark mb-3">
                   <div class="card">
-                    <div class="card-body" style="background-color: #FFFF99;">
-                      
+                    <div class="card-body" style="background-color: #FFFF99;">   
                       <h4>Create appointment please</h4>
-                      <%= form_for Appointment.new , :html => { :id => "new_appointment_#{patient.id}" } do |f| %>
-                        <%= f.hidden_field :patient_id, :value => patient.id %>
+                      <%= form_for Appointment.new , :html => { :id => "new_appointment_#{current_user.multiple_role_id}" } do |f| %>
+                        <%= f.hidden_field :patient_id, :value => current_user.multiple_role_id %>
                         <%= f.hidden_field :doctor_id, :value => doctor.id %>
                         <p><%= f.label :visit_time %></p>
                         <p><%= f.date_field :visit_time, min: Date.today, start_year: Date.today.year - 0 %></p>
@@ -40,7 +40,6 @@
         	    </div>
       	    </div>
           </div>
-        <% end %>
       <% end %>
       
     </div>

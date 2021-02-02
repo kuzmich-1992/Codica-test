@@ -39,7 +39,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'activeadmin'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
-gem 'cancancan'
 gem 'devise'
 gem 'jquery-rails'
 gem 'mini_racer'

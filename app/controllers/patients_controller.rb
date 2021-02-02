@@ -1,26 +1,26 @@
+# frozen_string_literal: true
+
 class PatientsController < ApplicationController
-  
-  before_action :authenticate_user!, :authenticate_patient, except: [:new, :create, :update, :show]
+  before_action :authenticate_user!, :authenticate_patient, except: %i[new create update show]
 
-  before_action :new_registration, only: [:new, :create]
+  before_action :new_registration, only: %i[new create]
 
-  before_action :set_patient, only: [:show, :edit, :update, :destroy]   
+  before_action :set_patient, only: %i[show edit update destroy]
 
   def index
     @patients = Patient.all
-    if params[:doctor] and params[:doctor][:specialization]
-      @doctors = Doctor.search(params[:doctor][:specialization])
-    else
-      @doctors = Doctor.all
-    end
+    @doctors = if params[:doctor] && params[:doctor][:specialization]
+                 Doctor.search(params[:doctor][:specialization])
+               else
+                 Doctor.all
+               end
   end
-  
+
   def new
     @patient = Patient.new
     @patient.build_user
   end
 
-  
   def create
     @patient = Patient.new(patients_params)
 
@@ -34,19 +34,19 @@ class PatientsController < ApplicationController
       end
     end
   end
-    
-private
+
+  private
 
   def patients_params
-    params.require(:patient).permit(:name, user_attributes: [ :id, :email, :name, :password, :password_confirmation ])
+    params.require(:patient).permit(:name, user_attributes: %i[id email name password password_confirmation])
   end
-  
-  def authenticate_patient     
-    redirect_to(new_user_session_path) unless current_user.multiple_role_type == "Patient"  
+
+  def authenticate_patient
+    redirect_to(new_user_session_path) unless current_user.multiple_role_type == 'Patient'
   end
-  
+
   def new_registration
-    redirect_to("patients#index") if user_signed_in?
+    redirect_to('patients#index') if user_signed_in?
   end
 
   def set_patient

@@ -42,7 +42,7 @@ gem 'bootstrap'
 gem 'cancancan'
 gem 'devise'
 gem 'jquery-rails'
-gem 'mini_racer', platforms: :ruby
+gem 'mini_racer'
 gem 'pry'
 gem 'rubocop'
 gem 'simple_form'
